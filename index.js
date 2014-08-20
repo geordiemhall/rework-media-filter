@@ -104,10 +104,12 @@ module.exports = function (predicate){
 */
 
 module.exports.presets = {
-  // minWidth tries to force the page state to be styled as if the window width was at least `width`
+  // minWidth tries to force the page state to be styled as if the window width was at least `width`, with no media queries left
   //    Removes any media queries that only take effect below `minWidth`
   //    Flattens any other media queries that have a min-width, so they're effectively always triggered
-  minWidth: function(width){
+  //    By default any media queries with a min-width larger than `width` will be removed, since they wouldn't have been triggered at `width`.
+  //    You can set `allowWider` to true to also trigger them
+  minWidth: function(width, allowWider){
     var minScreenWidth = width || 1200  // 1200 is bootstrap's default @screen-lg
     
     return module.exports(function(mediaRule, props){
@@ -119,6 +121,10 @@ module.exports.presets = {
       }
 
       if (props['min-width']){
+        var minWidth = parseInt(props['max-width'], 10)
+        if (minWidth > width && !allowWider){
+          return false // remove
+        }
         return true // flatten
       }
 

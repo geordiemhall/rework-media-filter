@@ -2,6 +2,8 @@
 
 Plugin for rework that allows you to remove media queries that don't match some criteria. 
 
+## How to use
+
 You can provide a predicate function that gets given all @media blocks. You can then decide whether to remove the @media block entirely, flatten the @media block  (move its contents up into global scope), replace the selector used for the @media block, or leave it untouched.
 
 The predicate gets passed two arguments: `predicate(mediaRule, props)`.
@@ -45,6 +47,8 @@ var myFilter = reworkMediaFilter(function(rule, props){
 ```
 
 
+## Presets
+
 There are also some presets provided for common actions. You can access these using the `presets` property on the module.
 
 Eg. 
@@ -56,12 +60,16 @@ var myFilter = reworkMediaFilter.presets.minWidth(1200)
 
 The current presets are:
 
-### `minWidth(width)`
-* minWidth tries to force the page state to be styled as if the window width is at least `width`
-    * Removes any media queries that only take effect below `minWidth`
-    * Flattens any other media queries that have a min-width, so they're effectively always triggered
+* `minWidth(width: int, allowWider: bool?)`. 
+    * Tries to force the page state to be styled as if the window width is at least `width`
+        * Removes any media queries that only take effect below `minWidth`
+        * Flattens any other media queries that have a min-width, so they're effectively always triggered
+        * By default any media queries with a min-width larger than `width` will be removed, since they wouldn't have been triggered at `width`.
+        * You can set `allowWider` to true to trigger them. Note that even if `allowWider` is true, they'll still be flattened. If you want to leave them untouched, then just write your own filter
 
-### Using with `grunt-rework`
+
+
+## Using with `grunt-rework`
 
 Can be used in conjunction with `grunt-rework`. 
 
