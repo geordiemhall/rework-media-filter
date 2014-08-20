@@ -1,0 +1,29 @@
+{
+  "name": "rework-media-filter",
+  "version": "0.1.0",
+  "description": "Plugin for Rework that lets you remove, flatten or change @media blocks.",
+  "dependencies": {},
+  "keywords": [
+    "css",
+    "rework",
+    "media",
+    "media queries",
+    "flatten",
+    "scope",
+    "filter",
+    "criteria"
+  ],
+  "author": {
+    "name": "@geordiemhall"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/geordiemhall/rework-filter-css/issues"
+  },
+  "homepage": "https://github.com/geordiemhall/rework-filter-css",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/geordiemhall/rework-filter-css.git"
+  },
+  "readmeFilename": "README.md"
+}
