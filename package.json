@@ -1,6 +1,6 @@
 {
   "name": "rework-media-filter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Plugin for Rework that lets you remove, flatten or change @media blocks.",
   "dependencies": {},
   "keywords": [
