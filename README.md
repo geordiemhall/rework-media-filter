@@ -5,10 +5,11 @@ Plugin for rework that allows you to remove media queries that don't match some 
 You can provide a predicate function that gets given all @media blocks. You can then decide whether to remove the @media block entirely, flatten the @media block  (move its contents up into global scope), replace the selector used for the @media block, or leave it untouched.
 
 The predicate gets passed two arguments: `predicate(mediaRule, props)`.
-    * `mediaRule` is the standard ast node from Rework, in case you need it for anything
-    * `props` is an object with the key/value pairs in the rule, which you can use to check values against your own logic
-        * Eg. @media (min-width: 800px) and (max-width: 1000px) will have a `props` object like `{ 'min-width': '800px', 'max-width': '1000px' }`
-        * NOTE: Only very basic parsing is performed on the rule, and it only expects one level of bracket nesting. Complex rules will have unexpected results, but you can always parse them yourself manually using the `mediaRule` object
+
+* `mediaRule` is the standard ast node from Rework, in case you need it for anything
+* `props` is an object with the key/value pairs in the rule, which you can use to check values against your own logic
+    * Eg. @media (min-width: 800px) and (max-width: 1000px) will have a `props` object like `{ 'min-width': '800px', 'max-width': '1000px' }`
+    * NOTE: Only very basic parsing is performed on the rule, and it only expects one level of bracket nesting. Complex rules will have unexpected results, but you can always parse them yourself manually using the `mediaRule` object
 
 The return value of the predicate will determine how the @media rule is handled. Return 
 
